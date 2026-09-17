@@ -258,4 +258,47 @@ public class ListeSimpleTest {
         System.out.println(listeATester);
         assertEquals("ListeSimple(Noeud(4), Noeud(2), Noeud(3), Noeud(1), Noeud(5))", listeATester.toString());
     }
+
+
+    @Test
+    void modifiePremierElementAbsentNeModifieRien() {
+        listeATester.ajout(1);
+        listeATester.ajout(2);
+        listeATester.ajout(3);
+
+        listeATester.modifiePremier(99, 4);
+
+        assertEquals(
+            "ListeSimple(Noeud(3), Noeud(2), Noeud(1))",
+            listeATester.toString()
+        );
+        assertEquals(3, listeATester.getSize());
+    }
+
+    @Test
+    void supprimePremierElementAbsentNeModifieRien() {
+        listeATester.ajout(1);
+        listeATester.ajout(2);
+        listeATester.ajout(3);
+
+        listeATester.supprimePremier(99);
+
+        assertEquals(
+            "ListeSimple(Noeud(3), Noeud(2), Noeud(1))",
+            listeATester.toString()
+        );
+        assertEquals(3, listeATester.getSize());
+    }
+
+    @Test
+    void echangerMemeNoeudNeModifieRien() {
+        listeATester.ajout(1);
+
+        Noeud noeud = listeATester.tete;
+        listeATester.echanger(noeud, noeud);
+
+        assertEquals("ListeSimple(Noeud(1))", listeATester.toString());
+        assertEquals(1, listeATester.getSize());
+    }
+
 }
